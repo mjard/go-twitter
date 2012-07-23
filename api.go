@@ -16,13 +16,13 @@
 package twitter
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/url"
 	"os"
-	"json"
+	"regexp"
 	"strconv"
 	"time"
-	"regexp"
-	"url"
 )
 
 const (
@@ -433,7 +433,7 @@ func (self *Api) getStatuses(url_ string) []Status {
 	return timeline
 }
 
-func parseTwitterDate(date string) *time.Time {
+func parseTwitterDate(date string) time.Time {
 	r, err := regexp.Compile("\\+0000")
 
 	if err != nil {
@@ -445,7 +445,7 @@ func parseTwitterDate(date string) *time.Time {
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, err.Error()+"\n")
-		return time.LocalTime()
+		return time.Now()
 	}
 
 	return parsedTime

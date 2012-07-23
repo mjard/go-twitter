@@ -1,6 +1,6 @@
 package main
 
-import "twitter"
+import "github.com/jb55/go-twitter"
 import "flag"
 import "fmt"
 
